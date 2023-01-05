@@ -4,6 +4,7 @@ import Todo from "./Todo"
 const TodoApp = () =>{
     const [title, setTitle] = useState("")
     const [todos, setTodos] = useState([])
+
     function handleChange(e){
         const value = e.target.value
         setTitle(value)
@@ -13,6 +14,12 @@ const TodoApp = () =>{
         const temp = [...todos]
         const item = temp.find((item) => item.id === id)
         item.title = value
+        setTodos(temp)
+    }
+
+    function handleDelete(id, value){
+        
+        const temp = todos.filter((item)=>item.id !== id)        
         setTodos(temp)
     }
 
@@ -26,6 +33,7 @@ const TodoApp = () =>{
         const temp = [...todos]
         temp.unshift(newTodo)
         setTodos(temp)
+        setTitle("")
     }
     return(
         <div className="todoContainer">
@@ -36,7 +44,7 @@ const TodoApp = () =>{
             <div className="todosContainer">
                 {
                     todos.map(item => (
-                        <Todo key = {item.id} item={item} onUpdate={handleUpdate}/>
+                        <Todo key = {item.id} item={item} onUpdate={handleUpdate} onDelete={handleDelete}/>
                     ))
                 }
             </div>
