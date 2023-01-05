@@ -1,3 +1,4 @@
+import "./todoApp.css"
 import { useState } from "react"
 import Todo from "./Todo"
 
@@ -38,7 +39,7 @@ const TodoApp = () =>{
     return(
         <div className="todoContainer">
             <form className="todoCreateForm" onSubmit={handleSubmit}>
-                <input className="todoInput" onChange={handleChange}/>
+                <input className="todoInput" onChange={handleChange} value={title}/>
                 <input className="buttonCreate" type="submit" value="Create ToDo" onClick={handleSubmit}/>                
             </form>
             <div className="todosContainer">
