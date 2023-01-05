@@ -25,6 +25,15 @@ const TodoApp = () =>{
                 <input className="todoInput" onChange={handleChange}/>
                 <input className="buttonCreate" type="submit" value="Create ToDo" onClick={handleSubmit}/>                
             </form>
+            <div className="todosContainer">
+                {
+                    todos.map(item => (
+                        <div key={item.id}>
+                            {item.title}
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     )
 }
